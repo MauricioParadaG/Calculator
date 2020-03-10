@@ -1,0 +1,71 @@
+.calculator{
+width: 90%;
+max-width: 380px; /*tamaño total de la division padre, calculadora*/
+margin-right: auto; /*margin right: para que siempre este centrado*/
+margin-left: auto; 
+}
+
+.calculator__screen{
+	/* la funcion rgba() define los colores usando Red-green-blue-alpha , donde alpha es un numero entre 0 y 1, con 0 transparente y 1 muy opaco fuerte. Recibe 4 parametros si o si */
+	background: rgba(0,0,0,.8);
+	color: #fff;
+	padding: 1.5rem 1rem; /*padding puede tener hasta 3 parametros, el primero de arriba a bajo, el segundo es derecha izquierda, el tercero es el bottom, que es el pie o fondo*/
+	margin-bottom: 0.25rem; /* darle separacion de los botones*/
+	border-radius: 0.25rem; /* hacer las esquinas circulares*/
+	text-align: right;
+	font-size: 1.3em;
+}
+
+.calculator__keys{
+	display: grid;  /*crear un grid, es decir una tabla*/
+	grid-gap: .25rem; /*crear un espacio entre celda y celda*/
+	grid-template-columns: repeat(4,1fr);
+	grid-template-rows: repeat(5,1fr);
+}
+
+
+/* buscando el primer hijo del grid*/
+.calculator__keys :first-child{
+	/* como el papa tiene height 0, me daña el C, que es primer boton. Para arreglarlo, me toca meter un elemento vacio, que se sacrifique por el height 0, y luego reacomodar los botones*/
+	height: 0;
+	padding-bottom: 100%;
+/* un elemento de padding es el espacio entre su contenido y su borde*/
+}
+
+.calculator__keys button:hover{
+/* hover, es para cuando el mouse pase por encima, va de la mano con colocar un transition: all 1s*/
+	box-shadow: 0px 0px 12px #aaa;
+}
+
+.calculator__keys button{
+	border:none;
+	padding: 0;
+	font-weight: bold; /* negrilla a las letras en los botones*/
+	font-size: 1.4em; /*em es undad relativa con respecto a tamaño de letra en el elemento que se encuentra. Otros son px de pixel y ex que es respecto a altura de la letra x*/
+	transition: all 0.1s;	
+}
+
+/*Ahora a modificar botones de suma, igual y 0, ya que tienen tamaño de más de un boton. Se llega a ellos, con el selector de atributos que es un parentesis[] y con Data-Loquesea  */
+
+.calculator [data-math="add"],
+.calculator [data-operation="equals"]{
+	grid-row: span 2;  /*ocupar 2 filas*/
+}
+
+.calculator [data-number="0"]{
+	grid-column: span 2;  /*ocupar 2 filas*/
+}
+
+.calculator [data-operation="clear"]{
+	grid-column: 1; /*en la columna que quiero que aparezcan*/
+	grid-row: 1; /*en la fila que quiero que aparezcan*/
+}
+
+
+
+
+
+
+
+
+
