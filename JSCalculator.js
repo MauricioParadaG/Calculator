@@ -4,7 +4,7 @@ var completeNumber ="";
 let number1, mathSign;
 
 // screen.textContent = "0"; // solucion de EDTEAM
-
+// working on filtering 
 const calculator = function(){
 	// si buttons se vuelve null, acaba la funcion. 
    if (!buttons) return; // aqui se caputa el click
